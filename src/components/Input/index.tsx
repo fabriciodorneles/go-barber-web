@@ -12,11 +12,14 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     icon: React.ComponentType<IconBaseProps>;
 }
 
-// declara a interface aqui agora tem todas as propriedade de um input normal
 const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
     const inputRef = useRef(null);
     const [isFocused, setIsFocused] = useState(false);
-    const { fieldName, defaultValue, error, registerField } = useField(name);
+    const { fieldName, defaultValue, registerField } = useField(name);
+
+    const handleInputBlur() {
+        setIsFocused(false);
+    }
 
     useEffect(() => {
         registerField({
@@ -31,7 +34,7 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
             {Icon && <Icon size={20} />}
             <input
                 onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
+                onBlur={handleInputBlur}
                 defaultValue={defaultValue}
                 ref={inputRef}
                 {...rest}
