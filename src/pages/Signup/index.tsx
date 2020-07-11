@@ -28,9 +28,12 @@ const SignUp: React.FC = () => {
                 abortEarly: false,
             });
         } catch (err) {
-            console.log(err);
-            const errors = getValidationErrors(err);
-            formRef.current?.setErrors(errors);
+            if (err instanceof Yup.ValidationError) {
+                const errors = getValidationErrors(err);
+                formRef.current?.setErrors(errors);
+            }
+            // disparar um toast - mensagenzinha cartão popup
+            // cria um component/toastContainer pra isso
         }
     }, []);
 
