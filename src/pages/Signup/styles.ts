@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 import signUpBackgroundImg from '../../assets/sign-up-background.png';
 
@@ -8,6 +8,7 @@ export const Container = styled.div`
     display: flex;
     align-items: stretch;
 `;
+
 export const Content = styled.div`
     display: flex;
     flex-direction: column;
@@ -19,6 +20,26 @@ export const Content = styled.div`
     width: 100%;
     max-width: 700px;
     align-items: center;
+`;
+
+const appearFromLeft = keyframes`
+from{
+    opacity:0;
+    transform: translateX(-50px);
+}
+to{
+    opacity:1;
+    transform: translateX(0px);
+}
+`;
+
+export const AnimationContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    animation: ${appearFromLeft} 1s;
 
     form {
         margin: 80px 0;
@@ -61,6 +82,7 @@ export const Content = styled.div`
         }
     }
 `;
+
 export const Background = styled.div`
     /* ocupa todo o espaço menos o tamanho do content, os 700px, ele é flexivel */
     flex: 1;
