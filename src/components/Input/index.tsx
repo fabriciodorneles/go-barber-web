@@ -15,11 +15,17 @@ import { Container, Error } from './styles';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     // aqui ele sobreescreve pra deixar obrigatório por que é opcional por default(name?:string)
     name: string;
+    containerStyle?: object;
     // importou lá em cima do react icons o icon base props, por icone ter acesso às propriedades
     icon: React.ComponentType<IconBaseProps>;
 }
 
-const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
+const Input: React.FC<InputProps> = ({
+    name,
+    containerStyle = {},
+    icon: Icon,
+    ...rest
+}) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState(false);
     const [isFilled, setIsFilled] = useState(false);
@@ -44,6 +50,7 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
     }, [fieldName, registerField]);
     return (
         <Container
+            style={containerStyle}
             isErrored={!!error}
             isFilled={isFilled}
             isFocused={isFocused}
@@ -51,6 +58,7 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
             {/* teve que converter ali em cima pro react entender que era um componente, um icon */}
             {Icon && <Icon size={20} />}
             <input
+                name={name}
                 onFocus={handleInputFocus}
                 onBlur={handleInputBlur}
                 defaultValue={defaultValue}
