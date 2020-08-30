@@ -41,6 +41,8 @@ export const Profile = styled.div`
     margin-left: 80px;
 
     img {
+        object-fit: cover;
+
         width: 56px;
         height: 56px;
         border-radius: 50%;
@@ -136,6 +138,8 @@ export const NextAppointment = styled.aside`
         }
 
         img {
+            object-fit: cover;
+
             height: 80px;
             width: 80px;
             background: #423f4d;
@@ -213,6 +217,8 @@ export const Appointment = styled.div`
         margin-left: 24px;
 
         img {
+            object-fit: cover;
+
             height: 56px;
             width: 56px;
             border-radius: 50%;

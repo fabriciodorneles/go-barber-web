@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect, useMemo } from 'react';
-import { isToday, format, isAfter } from 'date-fns';
+import { isToday, format, isAfter, isWeekend } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 
 import DayPicker, { DayModifiers } from 'react-day-picker';
@@ -60,6 +60,16 @@ const Dashboard: React.FC = () => {
     const handleMonthChange = useCallback((month: Date) => {
         setCurrentMonth(month);
     }, []);
+
+    useEffect(() => {
+        if (isWeekend(selectedDate)) {
+            const newDate = selectedDate;
+            while (isWeekend(selectedDate)) {
+                newDate.setDate(newDate.getDate() + 1);
+            }
+            setSelectedDate(newDate);
+        }
+    }, [selectedDate]);
 
     useEffect(() => {
         api.get(`/providers/${user.id}/month-availability`, {
@@ -204,7 +214,7 @@ const Dashboard: React.FC = () => {
                     <Section>
                         <strong>Tarde</strong>
 
-                        {morningAppointments.length === 0 && (
+                        {afternoonAppointments.length === 0 && (
                             <p>Nenhum agendamento neste período</p>
                         )}
 

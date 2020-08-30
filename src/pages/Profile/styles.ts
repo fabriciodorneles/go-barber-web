@@ -69,6 +69,7 @@ export const AvatarInput = styled.div`
     align-self: center;
 
     img {
+        object-fit: cover;
         width: 186px;
         height: 186px;
         border-radius: 50%;
