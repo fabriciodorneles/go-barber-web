@@ -30,22 +30,17 @@ export const Container = styled(animated.div)<ContainerProps>`
 
     display: flex;
 
-    /* um toast que vem seguido de outro toast faz isso */
     & + div {
         margin-top: 8px;
     }
 
-    /* faz isso aqui pra não ficar cheio de ifs nesse css aqui
-    puxa la de cima e é como se substituisse aqui */
     ${(props) => toastTypeVariations[props.type || 'info']}
 
-    /* faz pegar o svg que tá diretamente dentro do toast */
     > svg {
         margin: 4px 12px 0 0;
     }
 
     div {
-        /* preenche o máximo do tamanho possível */
         flex: 1;
 
         p {
@@ -62,7 +57,6 @@ export const Container = styled(animated.div)<ContainerProps>`
         opacity: 0.6;
         border: 0;
         background: transparent;
-        /* herda o tom de cor do pai */
         color: inherit;
     }
 

@@ -22,15 +22,11 @@ const icons = {
 const Toast: React.FC<ToastProps> = ({ message, style }) => {
     const { removeToast } = useToast();
 
-    // use Effect vazio pra disparar uma função(timer) sempre que um toast é criado
     useEffect(() => {
         const timer = setTimeout(() => {
             removeToast(message.id);
         }, 3000);
 
-        // esse return do effect aqui é chamado sempre que o componente deixar de existir
-        // no caso aqui é pra se o usuario fechar o toast antes do timer terminar(se não ia crashar)
-        // aí nesse caso, acaba com o timer.
         return () => {
             clearTimeout(timer);
         };
@@ -47,12 +43,7 @@ const Toast: React.FC<ToastProps> = ({ message, style }) => {
                 <strong>{message.title}</strong>
                 {message.description && <p>{message.description}</p>}
             </div>
-            <button
-                // tem que fazer assim (arrowfunc) pra receber o parametro
-                // senão a função vai executar no momento em que a pagina carregar
-                onClick={() => removeToast(message.id)}
-                type="button"
-            >
+            <button onClick={() => removeToast(message.id)} type="button">
                 <FiXCircle size={18} />
             </button>
         </Container>

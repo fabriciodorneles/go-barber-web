@@ -9,8 +9,6 @@ interface ToastContainerProps {
 }
 
 const ToastContainer: React.FC<ToastContainerProps> = ({ messages }) => {
-    // com isso aqui tá transofrmando o array de messages em um array de
-    // Messages transitions(com a animação)
     const messagesWithTransition = useTransition(
         messages,
         (message) => message.id,
@@ -22,7 +20,6 @@ const ToastContainer: React.FC<ToastContainerProps> = ({ messages }) => {
     );
     return (
         <Container>
-            {/* trocou aqui embaixo, e tem que adicionar uns parametros novos */}
             {messagesWithTransition.map(({ item, key, props }) => (
                 <Toast key={key} style={props} message={item} />
             ))}

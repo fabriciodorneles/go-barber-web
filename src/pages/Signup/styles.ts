@@ -12,11 +12,7 @@ export const Container = styled.div`
 export const Content = styled.div`
     display: flex;
     flex-direction: column;
-    /* justify-content: center;
-    align-items: center; */
     place-content: center;
-    /* nunca vai ser menos que o tamanho do conteudo (100%)
-    nunca vai ser mais que 700px */
     width: 100%;
     max-width: 700px;
     align-items: center;
@@ -62,7 +58,6 @@ export const AnimationContainer = styled.div`
             color: ${shade(0.2, '#f4ede8')};
         }
     }
-    /* pega só o a do primeiro nivel(mais perto do content) */
     > a {
         color: #f4ede8;
         display: block;
@@ -84,9 +79,7 @@ export const AnimationContainer = styled.div`
 `;
 
 export const Background = styled.div`
-    /* ocupa todo o espaço menos o tamanho do content, os 700px, ele é flexivel */
     flex: 1;
     background: url(${signUpBackgroundImg}) no-repeat;
-    /* ocupa toda a tela restante */
     background-size: cover;
 `;

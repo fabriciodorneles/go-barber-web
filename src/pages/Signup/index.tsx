@@ -41,7 +41,6 @@ const SignUp: React.FC = () => {
                 });
 
                 await api.post('users', data);
-                // direciona pra root(login)
                 history.push('/');
                 addToast({
                     type: 'sucess',

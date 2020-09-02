@@ -10,11 +10,6 @@ interface RouteProps extends ReactDOMRouterProps {
     isPrivate?: boolean;
     component: React.ComponentType;
 }
-// Condições do if(no return) ali embaixo
-// true/true = OK
-// true/false = redireciona para o login
-// false/true = redirecion para o dashboard
-// false/false = OK
 const Route: React.FC<RouteProps> = ({
     isPrivate = false,
     component: Component,

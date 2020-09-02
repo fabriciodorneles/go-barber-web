@@ -7,16 +7,12 @@ import React, {
 } from 'react';
 import { IconBaseProps } from 'react-icons';
 import { FiAlertCircle } from 'react-icons/fi';
-// usa do core porque é um funcionalidade para tudo
 import { useField } from '@unform/core';
 import { Container, Error } from './styles';
 
-// cria uma interface e extende/puxa do React
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-    // aqui ele sobreescreve pra deixar obrigatório por que é opcional por default(name?:string)
     name: string;
     containerStyle?: object;
-    // importou lá em cima do react icons o icon base props, por icone ter acesso às propriedades
     icon: React.ComponentType<IconBaseProps>;
 }
 
@@ -55,7 +51,6 @@ const Input: React.FC<InputProps> = ({
             isFilled={isFilled}
             isFocused={isFocused}
         >
-            {/* teve que converter ali em cima pro react entender que era um componente, um icon */}
             {Icon && <Icon size={20} />}
             <input
                 name={name}

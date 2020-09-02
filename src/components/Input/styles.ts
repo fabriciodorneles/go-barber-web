@@ -15,11 +15,9 @@ export const Container = styled.div<ContainerProps>`
     display: flex;
     align-items: center;
 
-    /* já deixa pronto pra receber a borda vermelha de erro */
     border: 2px solid #232129;
     color: #666360;
 
-    /* todo input que seja precedido por outro margin top de 8px */
     & + div {
         margin-top: 8px;
     }

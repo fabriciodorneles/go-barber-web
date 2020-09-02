@@ -3,8 +3,6 @@ import { uuid } from 'uuidv4';
 import ToastContainer from '../components/ToastContainer';
 
 export interface ToastMessage {
-    // precisa do id pq vai poder ter vários toasts ao mesmo tempo na tela
-    // e vai fazer um map, por isso vai precisar da key
     id: string;
     type?: 'sucess' | 'error' | 'info';
     title: string;
@@ -19,7 +17,6 @@ interface ToastContextData {
 const ToastContext = createContext<ToastContextData>({} as ToastContextData);
 
 const ToastProvider: React.FC = ({ children }) => {
-    // é um array de estados porque tem várias mensagens
     const [messages, setMessages] = useState<ToastMessage[]>([]);
 
     const addToast = useCallback(
@@ -33,7 +30,6 @@ const ToastProvider: React.FC = ({ children }) => {
                 description,
             };
 
-            // faz isso aqui pra não ter que declarar no colchetes ali embaixo
             setMessages((oldMessages) => [...oldMessages, toast]);
         },
         [],
@@ -49,7 +45,6 @@ const ToastProvider: React.FC = ({ children }) => {
     );
 };
 
-// hook
 function useToast(): ToastContextData {
     const context = useContext(ToastContext);
 

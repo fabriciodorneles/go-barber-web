@@ -12,18 +12,15 @@ export const Container = styled.div`
         font-weight: 500;
         opacity: 0;
         transition: opacity 0.4s;
-        /* serve pq o opacity não apaga o tooltip */
         visibility: hidden;
 
         position: absolute;
         bottom: calc(100% + 12px);
-        /* esses dois aqui são o hackzinho pra deixar bem na metade o tooltip */
         left: 50%;
         transform: translate(-50%);
 
         color: #312e38;
 
-        /* hackzinho para criar o triangulo (google arrows css) */
         &::before {
             content: '';
             border-style: solid;
@@ -32,7 +29,6 @@ export const Container = styled.div`
             bottom: 20px;
             top: 100%;
             position: absolute;
-            /* esses dois aqui são o hackzinho pra deixar bem na metade o tooltip */
             left: 50%;
             transform: translate(-50%);
         }

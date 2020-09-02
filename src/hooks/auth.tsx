@@ -27,9 +27,7 @@ interface AuthContextData {
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-// declara como propriedade(parametro) o children significa que tudo o component receber como filho repassa para dentro dele
 export const AuthProvider: React.FC = ({ children }) => {
-    // esse primeira atualização aqui é só quando der um refresh na página
     const [data, setData] = useState<AuthState>(() => {
         const token = localStorage.getItem('@GoBarber:token');
         const user = localStorage.getItem('@GoBarber:user');
